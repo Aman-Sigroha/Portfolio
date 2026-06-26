@@ -1,0 +1,16 @@
+{
+  "installCommand": "npm install --prefix client && npm install --prefix server",
+  "buildCommand": "npm run build --prefix client",
+  "outputDirectory": "client/dist",
+  "functions": {
+    "api/index.js": {
+      "memory": 1024,
+      "maxDuration": 10,
+      "includeFiles": "server/assets/resume/**"
+    }
+  },
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

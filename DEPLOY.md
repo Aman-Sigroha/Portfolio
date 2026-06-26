@@ -1,91 +1,118 @@
-# Deploy Portfolio
+# Deploy Portfolio (Vercel — frontend + Node API)
 
-Stack:
-- **Frontend:** Vercel (`client/`)
-- **Backend:** Railway (`server/`)
-- **Database:** Neon PostgreSQL (already configured locally)
+Everything deploys to **one Vercel project**: React frontend + Express API on the same domain.
 
-## 1. Push to GitHub
+- Frontend: static build from `client/`
+- Backend: serverless Express at `/api/*` via `api/index.js`
+- Database: Neon PostgreSQL
 
-```powershell
-cd "C:\Users\amans\OneDrive\Desktop\Old Files\WEB DEV\WEB DEV\PROJECTS\Portfolio"
-git init
+Repo: [github.com/Aman-Sigroha/Portfolio](https://github.com/Aman-Sigroha/Portfolio)
+
+---
+
+## 1. Push latest code
+
+```bash
 git add .
-git commit -m "Prepare portfolio for production deployment"
-git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/portfolio.git
-git push -u origin main
+git commit -m "Add Vercel full-stack deployment"
+git push origin main
 ```
 
-Create the GitHub repo first at [github.com/new](https://github.com/new).
+---
 
-## 2. Deploy backend (Railway)
+## 2. Create Vercel project
 
-1. Go to [railway.app](https://railway.app) and create a new project.
-2. **Deploy from GitHub repo** and select your repo.
-3. Add a service and set **Root Directory** to `server`.
-4. Add environment variables in Railway:
+1. Go to [vercel.com/new](https://vercel.com/new)
+2. Import **Aman-Sigroha/Portfolio**
+3. **Root Directory:** leave as `.` (repo root — not `client/`)
+4. Vercel reads `vercel.json` at the root automatically
 
-| Variable | Value |
-|----------|-------|
-| `NODE_ENV` | `production` |
-| `DATABASE_URL` | Your Neon connection string |
-| `CLIENT_ORIGIN` | `https://YOUR-VERCEL-URL.vercel.app` (update after step 3) |
+---
 
-5. Deploy and copy the public URL (e.g. `https://portfolio-api.up.railway.app`).
-6. Test: open `https://YOUR-RAILWAY-URL/api/health` — should return `{"status":"ok",...}`.
+## 3. Environment variables (Vercel → Settings → Environment Variables)
 
-### Resume PDF (optional for now)
+| Variable | Value | Notes |
+|----------|-------|-------|
+| `DATABASE_URL` | Your **Neon pooled** connection string | Use the `-pooler` URL from Neon dashboard |
+| `NODE_ENV` | `production` | |
+| `CLIENT_ORIGIN` | `https://YOUR-PROJECT.vercel.app` | Your live Vercel URL (no trailing slash) |
 
-Place your CV at:
+**Do not set `VITE_API_URL`** on Vercel — the API lives on the same domain at `/api/...`, so the client uses relative paths automatically.
+
+---
+
+## 4. Deploy
+
+Click **Deploy**. Vercel will:
+
+1. `npm install` in `client/` and `server/`
+2. Build the Vite app → `client/dist`
+3. Deploy `api/index.js` as a serverless function
+
+---
+
+## 5. Verify
+
+After deploy, test these URLs (replace with your domain):
+
+- `https://YOUR-PROJECT.vercel.app` — site loads
+- `https://YOUR-PROJECT.vercel.app/api/health` — `{ "status": "ok" }`
+- `https://YOUR-PROJECT.vercel.app/api/projects` — project JSON
+- Contact form on `/contact`
+- Download CV button → `/api/resume/download`
+
+---
+
+## Local development (unchanged)
+
+Terminal 1 — API:
+
+```bash
+cd server
+npm run dev
+```
+
+Terminal 2 — frontend:
+
+```bash
+cd client
+npm run dev
+```
+
+Vite proxies `/api` → `localhost:3001`. No `VITE_API_URL` needed locally.
+
+---
+
+## Resume PDF
+
+Production CV path:
 
 `server/assets/resume/Aman_Sigroha_Resume.pdf`
 
-Then redeploy Railway.
+Update this file and redeploy when your resume changes.
 
-## 3. Deploy frontend (Vercel)
+---
 
-1. Go to [vercel.com](https://vercel.com) → **Add New Project** → import GitHub repo.
-2. Set **Root Directory** to `client`.
-3. Framework preset: **Vite** (auto-detected).
-4. Add environment variable:
+## Custom domain (optional)
 
-| Variable | Value |
-|----------|-------|
-| `VITE_API_URL` | Your Railway URL (no trailing slash) |
+Vercel → Project → Settings → Domains → add your domain.
 
-5. Deploy and copy your live URL (e.g. `https://portfolio-xyz.vercel.app`).
+Then update `CLIENT_ORIGIN` to `https://yourdomain.com` and redeploy.
 
-## 4. Connect frontend + backend
-
-1. In **Railway**, update `CLIENT_ORIGIN` to your exact Vercel URL.
-2. Redeploy Railway (or it may auto-redeploy on env change).
-3. Visit your Vercel site and test:
-   - Projects / Skills load from API
-   - Contact form submits
-   - Download CV (after PDF is added)
-
-## 5. Custom domain (optional)
-
-- **Vercel:** Project → Settings → Domains
-- **Railway:** Service → Settings → Networking → Custom Domain
-- Update `CLIENT_ORIGIN` and `VITE_API_URL` if URLs change.
-
-## Local production preview
-
-```powershell
-cd client
-$env:VITE_API_URL="http://localhost:3001"
-npm run build
-npm run preview
-```
+---
 
 ## Troubleshooting
 
 | Issue | Fix |
 |-------|-----|
-| API calls fail on live site | Check `VITE_API_URL` in Vercel matches Railway URL |
-| CORS errors | Set `CLIENT_ORIGIN` in Railway to exact Vercel URL (https, no trailing slash) |
-| 404 on page refresh | `vercel.json` SPA rewrite is included in `client/` |
-| Contact form 500 | Verify `DATABASE_URL` in Railway and Neon is reachable |
+| API 404 on Vercel | Root Directory must be repo root, not `client/` |
+| DB connection errors | Use Neon **pooled** connection string in `DATABASE_URL` |
+| CORS errors | Set `CLIENT_ORIGIN` to exact Vercel URL |
 | CV download 404 | Add PDF to `server/assets/resume/` and redeploy |
+| Page refresh 404 | Root `vercel.json` SPA rewrite handles this |
+
+---
+
+## Railway (optional)
+
+`server/railway.toml` is still there if you ever want a separate API host. For Vercel-only, you can ignore Railway.
