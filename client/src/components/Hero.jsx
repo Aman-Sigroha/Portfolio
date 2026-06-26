@@ -35,16 +35,11 @@ export default function Hero() {
         <CornerOrb position="bottom-left" variant="home" size={820} />
       </div>
 
-      {/* Edge fades so the 3D A blends into the page */}
+      {/* Top / bottom fades only — side fades removed to avoid visible bands over the A's */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-40 z-10"
         style={{ background: 'linear-gradient(to bottom, #000000 0%, transparent 100%)' }} />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 z-10"
         style={{ background: 'linear-gradient(to top, #000000 0%, transparent 100%)' }} />
-      {/* Side fades */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-48 z-10"
-        style={{ background: 'linear-gradient(to right, #000000 0%, transparent 100%)' }} />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-48 z-10"
-        style={{ background: 'linear-gradient(to left, #000000 0%, transparent 100%)' }} />
 
       {/* Content */}
       <div className="relative z-10 text-center max-w-5xl mx-auto">

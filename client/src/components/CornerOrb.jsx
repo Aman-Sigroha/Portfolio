@@ -1,15 +1,6 @@
-import { useRef, Suspense, Component } from 'react'
+import { useRef, Suspense } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Text3D, Center, MeshTransmissionMaterial, Environment } from '@react-three/drei'
-import { EffectComposer, ChromaticAberration, Bloom } from '@react-three/postprocessing'
-import { BlendFunction } from 'postprocessing'
-import { Vector2 } from 'three'
-
-class ErrorBoundary extends Component {
-  constructor(props) { super(props); this.state = { error: false } }
-  static getDerivedStateFromError() { return { error: true } }
-  render() { return this.state.error ? null : this.props.children }
-}
 
 function LetterA() {
   const groupRef = useRef()
@@ -41,7 +32,7 @@ function LetterA() {
               ior={1.8}
               chromaticAberration={0.1}
               color="#ffffff"
-              envMapIntensity={1}
+              envMapIntensity={0.85}
               iridescence={1}
               iridescenceIOR={1.3}
               iridescenceThicknessRange={[0, 700]}
@@ -73,46 +64,32 @@ export default function CornerOrb({ position = 'top-right', size = 820, variant 
 
   return (
     <div
-      className="absolute pointer-events-none z-0 select-none"
+      className="absolute pointer-events-none z-0 select-none [&_canvas]:!bg-transparent"
       style={{ ...styles[position], width: size, height: size }}
       aria-hidden="true"
     >
       <Canvas
         camera={{ position: [0, 0, 6], fov: 55 }}
-        gl={{ alpha: true, antialias: false, powerPreference: 'high-performance' }}
-        onCreated={({ gl }) => {
-          gl.setClearColor(0x000000, 0)
+        gl={{
+          alpha: true,
+          antialias: true,
+          powerPreference: 'high-performance',
+          premultipliedAlpha: false,
         }}
-        style={{ background: 'transparent' }}
+        onCreated={({ gl, scene }) => {
+          gl.setClearColor(0x000000, 0)
+          scene.background = null
+        }}
+        style={{ background: 'transparent', width: '100%', height: '100%', display: 'block' }}
         dpr={[1, 2]}
       >
-        {/* Front key light — bright bevel glints */}
         <directionalLight position={[4, 10, 5]} intensity={4} color="#ffffff" />
-
-        {/* Coloured back lights — glass refracts these, creating visible colour through it */}
-        <pointLight position={[0,  2, -6]} intensity={12} color="#0044ff" distance={18} />
+        <pointLight position={[0, 2, -6]} intensity={12} color="#0044ff" distance={18} />
         <pointLight position={[3, -2, -6]} intensity={10} color="#aa00ff" distance={18} />
-        <pointLight position={[-3, 3, -6]} intensity={8}  color="#00ccff" distance={18} />
-
+        <pointLight position={[-3, 3, -6]} intensity={8} color="#00ccff" distance={18} />
         <ambientLight intensity={0.02} />
-
         <Environment preset="city" />
         <LetterA />
-
-        <ErrorBoundary>
-          <EffectComposer multisampling={0}>
-            <ChromaticAberration
-              blendFunction={BlendFunction.NORMAL}
-              offset={new Vector2(0.006, 0.006)}
-            />
-            <Bloom
-              luminanceThreshold={0.2}
-              luminanceSmoothing={0.9}
-              intensity={0.8}
-              blendFunction={BlendFunction.SCREEN}
-            />
-          </EffectComposer>
-        </ErrorBoundary>
       </Canvas>
     </div>
   )

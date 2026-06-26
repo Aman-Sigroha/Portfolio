@@ -151,7 +151,7 @@ export default function Projects() {
 
   return (
     <main className="relative min-h-screen">
-      <PageHero pageName="Projects" title="MY PROJECTS">
+      <PageHero pageName="Projects" title={<>MY <span className="text-[#00DEFF]">PROJECTS</span></>}>
         <div className="flex flex-wrap justify-center gap-2 mt-10 lg:mt-12">
           {CATEGORIES.map((cat) => (
             <button
