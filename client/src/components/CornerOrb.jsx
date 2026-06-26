@@ -79,12 +79,13 @@ export default function CornerOrb({ position = 'top-right', size = 820, variant 
     >
       <Canvas
         camera={{ position: [0, 0, 6], fov: 55 }}
-        gl={{ alpha: false, antialias: false, powerPreference: 'high-performance' }}
-        style={{ background: '#000000' }}
+        gl={{ alpha: true, antialias: false, powerPreference: 'high-performance' }}
+        onCreated={({ gl }) => {
+          gl.setClearColor(0x000000, 0)
+        }}
+        style={{ background: 'transparent' }}
         dpr={[1, 2]}
       >
-        <color attach="background" args={['#000000']} />
-
         {/* Front key light — bright bevel glints */}
         <directionalLight position={[4, 10, 5]} intensity={4} color="#ffffff" />
 
