@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
-import { apiUrl } from '../lib/api.js'
+import { RESUME_DOWNLOAD } from '../lib/api.js'
 
 export default function AboutTeaser() {
   const ref = useScrollAnimation(0.1)
@@ -28,7 +28,8 @@ export default function AboutTeaser() {
             More About Me
           </Link>
           <a
-            href={apiUrl('/api/resume/download')}
+            href={RESUME_DOWNLOAD.href}
+            download={RESUME_DOWNLOAD.filename}
             className="btn-outline px-6 py-3 flex items-center gap-2"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -4,7 +4,7 @@ import ExperienceTimeline from '../components/ExperienceTimeline'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import { FiGithub, FiLinkedin, FiDownload } from 'react-icons/fi'
 import { SiUpwork } from 'react-icons/si'
-import { apiUrl } from '../lib/api.js'
+import { RESUME_DOWNLOAD } from '../lib/api.js'
 
 const certifications = [
   'Complete Web Developer — Udemy',
@@ -25,7 +25,7 @@ export default function About() {
         subtitle="Full Stack Developer and AI systems builder based in New Delhi, India — delivering production-ready systems since early 2025."
       >
         <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <a href={apiUrl('/api/resume/download')} className="btn-primary flex items-center gap-2 text-sm px-5 py-2.5">
+          <a href={RESUME_DOWNLOAD.href} download={RESUME_DOWNLOAD.filename} className="btn-primary flex items-center gap-2 text-sm px-5 py-2.5">
             <FiDownload size={14} /> Download CV
           </a>
           <a href="https://github.com/Aman-Sigroha" target="_blank" rel="noopener noreferrer"

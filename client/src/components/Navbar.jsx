@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi'
 import { SiUpwork } from 'react-icons/si'
-import { apiUrl } from '../lib/api.js'
+import { RESUME_DOWNLOAD } from '../lib/api.js'
 
 const navLinks = [
   { label: 'Projects', to: '/projects' },
@@ -100,7 +100,8 @@ export default function Navbar() {
         {/* Right CTA — desktop */}
         <div className="hidden lg:flex items-center gap-3">
           <a
-            href={apiUrl('/api/resume/download')}
+            href={RESUME_DOWNLOAD.href}
+            download={RESUME_DOWNLOAD.filename}
             className="btn-primary text-base px-6 py-3"
           >
             Download CV
@@ -140,7 +141,7 @@ export default function Navbar() {
             {label}
           </Link>
         ))}
-        <a href={apiUrl('/api/resume/download')} className="btn-primary mt-4">
+        <a href={RESUME_DOWNLOAD.href} download={RESUME_DOWNLOAD.filename} className="btn-primary mt-4">
           Download CV
         </a>
         <div className="flex gap-6 mt-4">
