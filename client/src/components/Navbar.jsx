@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi'
 import { SiUpwork } from 'react-icons/si'
 import { RESUME_DOWNLOAD } from '../lib/api.js'
+import Logo from './Logo'
 
 const navLinks = [
   { label: 'Projects', to: '/projects' },
@@ -57,24 +58,8 @@ export default function Navbar() {
         }`}
       >
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 group">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-            <path
-              d="M6 26L16 6L26 26"
-              stroke="#00DEFF"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M9.5 20H22.5"
-              stroke="#00DEFF"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              opacity="0.5"
-            />
-          </svg>
-          <span className="text-sm font-semibold tracking-wider text-white/80 group-hover:text-white transition-colors">AS</span>
+        <Link to="/" className="group flex-shrink-0" aria-label="Aman Sigroha — Home">
+          <Logo size="sm" hideWordmarkOnMobile />
         </Link>
 
         {/* Center pill nav — desktop */}
@@ -132,6 +117,9 @@ export default function Navbar() {
         >
           ✕
         </button>
+        <Link to="/" onClick={() => setMobileOpen(false)} className="group mb-2">
+          <Logo size="md" />
+        </Link>
         {navLinks.map(({ label, to }) => (
           <Link
             key={to}

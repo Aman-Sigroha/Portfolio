@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi'
 import { SiUpwork } from 'react-icons/si'
+import Logo from './Logo'
 
 const socialLinks = [
   { icon: FiGithub, href: 'https://github.com/Aman-Sigroha', label: 'GitHub' },
@@ -31,9 +32,14 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-white/[0.06] px-6 lg:px-[20vw] py-8">
         <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-6 md:gap-4">
-          <p className="text-sm text-white/30 text-center md:text-left order-2 md:order-1">
-            ©{new Date().getFullYear()}. Aman Sigroha.
-          </p>
+          <div className="flex flex-col items-center md:items-start gap-3 order-2 md:order-1">
+            <Link to="/" className="group" aria-label="Aman Sigroha — Home">
+              <Logo size="sm" />
+            </Link>
+            <p className="text-sm text-white/30 text-center md:text-left">
+              ©{new Date().getFullYear()}. Aman Sigroha.
+            </p>
+          </div>
 
           <div className="flex items-center justify-center gap-5 order-1 md:order-2">
             {socialLinks.map(({ icon: Icon, href, label }) => (
