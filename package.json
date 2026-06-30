@@ -6,7 +6,8 @@
   "scripts": {
     "dev:client": "npm run dev --prefix client",
     "dev:server": "npm run dev --prefix server",
-    "build": "npm run build --prefix client",
+    "build": "node scripts/sync-resume.cjs && npm run build --prefix client",
+    "sync-resume": "node scripts/sync-resume.cjs",
     "db:setup": "npm run db:setup --prefix server"
   }
 }
