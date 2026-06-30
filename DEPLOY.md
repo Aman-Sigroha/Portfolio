@@ -36,8 +36,13 @@ git push origin main
 | `DATABASE_URL` | Your **Neon pooled** connection string | Use the `-pooler` URL from Neon dashboard |
 | `NODE_ENV` | `production` | |
 | `CLIENT_ORIGIN` | `https://YOUR-PROJECT.vercel.app` | Your live Vercel URL (no trailing slash) |
+| `ADMIN_PASSWORD_HASH` | bcrypt hash from `npm run hash-password --prefix server -- "your-password"` | Never store the plain password |
+| `JWT_SECRET` | Random string, 32+ chars | e.g. `openssl rand -base64 48` |
+| `ADMIN_SESSION_HOURS` | `8` | Optional — login session length |
 
 **Do not set `VITE_API_URL`** on Vercel — the API lives on the same domain at `/api/...`, so the client uses relative paths automatically.
+
+**Admin inbox:** `https://YOUR-PROJECT.vercel.app/admin/login` (not linked publicly from the site).
 
 ---
 
@@ -81,6 +86,23 @@ npm run dev
 
 Vite proxies `/api` → `localhost:3001`. No `VITE_API_URL` needed locally.
 
+### Admin inbox (local)
+
+1. Generate a password hash:
+
+```bash
+npm run hash-password --prefix server -- "your-strong-password-here"
+```
+
+2. Add to your root `.env`:
+
+```
+ADMIN_PASSWORD_HASH=<paste hash from step 1>
+JWT_SECRET=<random 32+ character string>
+```
+
+3. Restart the server, then open `http://localhost:5173/admin/login`.
+
 ---
 
 ## Resume PDF
@@ -109,6 +131,7 @@ Then update `CLIENT_ORIGIN` to `https://yourdomain.com` and redeploy.
 | DB connection errors | Use Neon **pooled** connection string in `DATABASE_URL` |
 | CORS errors | Set `CLIENT_ORIGIN` to exact Vercel URL |
 | CV download 404 | Add PDF to `server/assets/resume/` and redeploy |
+| Admin login fails | Set `ADMIN_PASSWORD_HASH` + `JWT_SECRET` on Vercel |
 | Page refresh 404 | Root `vercel.json` SPA rewrite handles this |
 
 ---

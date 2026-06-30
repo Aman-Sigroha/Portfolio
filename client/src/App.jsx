@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import Navbar from './components/Navbar'
 import CursorGlow from './components/CursorGlow'
@@ -9,6 +9,9 @@ import Contact from './pages/Contact'
 import About from './pages/About'
 import Skills from './pages/Skills'
 import Experience from './pages/Experience'
+import AdminLogin, { AdminLoginRedirectIfAuthed } from './pages/AdminLogin'
+import AdminDashboard from './pages/AdminDashboard'
+import AdminRoute from './components/AdminRoute'
 import { useLenis } from './hooks/useLenis'
 
 function ScrollToTop() {
@@ -31,7 +34,27 @@ function PageTransition({ children }) {
 function AppContent() {
   useLenis()
   const { pathname } = useLocation()
-  const showFooter = pathname !== '/contact'
+  const isAdmin = pathname.startsWith('/admin')
+  const showFooter = pathname !== '/contact' && !isAdmin
+
+  if (isAdmin) {
+    return (
+      <Routes>
+        <Route
+          path="/admin/login"
+          element={
+            <AdminLoginRedirectIfAuthed>
+              <AdminLogin />
+            </AdminLoginRedirectIfAuthed>
+          }
+        />
+        <Route element={<AdminRoute />}>
+          <Route path="/admin" element={<AdminDashboard />} />
+        </Route>
+        <Route path="/admin/*" element={<Navigate to="/admin" replace />} />
+      </Routes>
+    )
+  }
 
   return (
     <>

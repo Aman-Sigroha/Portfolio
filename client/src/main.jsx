@@ -6,6 +6,7 @@ import './index.css'
 import { API_BASE } from './lib/api.js'
 
 axios.defaults.baseURL = API_BASE
+axios.defaults.withCredentials = true
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
