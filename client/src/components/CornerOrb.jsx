@@ -1,6 +1,7 @@
 import { useRef, Suspense } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Text3D, Center, MeshTransmissionMaterial, Environment } from '@react-three/drei'
+import { ACCENT_CYAN, ACCENT_NEON, pinkMode } from '../lib/accent.js'
 
 function LetterA() {
   const groupRef = useRef()
@@ -84,9 +85,9 @@ export default function CornerOrb({ position = 'top-right', size = 820, variant 
         dpr={[1, 2]}
       >
         <directionalLight position={[4, 10, 5]} intensity={4} color="#ffffff" />
-        <pointLight position={[0, 2, -6]} intensity={12} color="#0044ff" distance={18} />
-        <pointLight position={[3, -2, -6]} intensity={10} color="#aa00ff" distance={18} />
-        <pointLight position={[-3, 3, -6]} intensity={8} color="#00ccff" distance={18} />
+        <pointLight position={[0, 2, -6]} intensity={12} color={pinkMode ? ACCENT_CYAN : '#0044ff'} distance={18} />
+        <pointLight position={[3, -2, -6]} intensity={10} color={pinkMode ? '#FF1493' : '#aa00ff'} distance={18} />
+        <pointLight position={[-3, 3, -6]} intensity={8} color={pinkMode ? ACCENT_NEON : '#00ccff'} distance={18} />
         <ambientLight intensity={0.02} />
         <Environment preset="city" />
         <LetterA />

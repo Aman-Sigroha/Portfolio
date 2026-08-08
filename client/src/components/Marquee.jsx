@@ -30,7 +30,7 @@ export default function Marquee({ reverse = false }) {
               <span
                 key={i}
                 className={`text-[15px] font-medium tracking-[0.15em] uppercase mx-16 ${
-                  item.accent ? 'text-[#00DEFF]' : 'text-white/45'
+                  item.accent ? 'text-teal' : 'text-white/45'
                 }`}
               >
                 {item.text}

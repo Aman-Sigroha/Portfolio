@@ -4,6 +4,7 @@ import PageHero from '../components/PageHero'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import { FiGithub, FiLinkedin, FiMail, FiPhone, FiMapPin } from 'react-icons/fi'
 import { SiUpwork } from 'react-icons/si'
+import LeetCodeIcon, { LEETCODE_URL } from '../components/LeetCodeIcon'
 
 const services = [
   'Full Stack Web Application',
@@ -50,11 +51,11 @@ export default function Contact() {
       >
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <a href="tel:+919911864871"
-            className="flex items-center gap-2 text-sm text-white/50 hover:text-[#00DEFF] transition-colors glass pill px-4 py-2">
+            className="flex items-center gap-2 text-sm text-white/50 hover:text-teal transition-colors glass pill px-4 py-2">
             <FiPhone size={13} /> +91 9911864871
           </a>
           <a href="mailto:amansigrohawork@gmail.com"
-            className="flex items-center gap-2 text-sm text-white/50 hover:text-[#00DEFF] transition-colors glass pill px-4 py-2">
+            className="flex items-center gap-2 text-sm text-white/50 hover:text-teal transition-colors glass pill px-4 py-2">
             <FiMail size={13} /> amansigrohawork@gmail.com
           </a>
         </div>
@@ -67,7 +68,7 @@ export default function Contact() {
           <div>
             <p className="section-label mb-3">A Need?</p>
             <h2 className="text-2xl font-bold text-white mb-4">
-              Let's build something <span className="text-[#00DEFF]">great together</span>
+              Let's build something <span className="text-teal">great together</span>
             </h2>
             <p className="text-sm text-white/50 leading-relaxed">
               If you have a project in mind, want to discuss ideas, or are looking for a full-stack
@@ -82,13 +83,13 @@ export default function Contact() {
               { icon: <FiMapPin size={15} />, label: 'Location', value: 'New Delhi, India', href: null },
             ].map(({ icon, label, value, href }) => (
               <div key={label} className="flex items-center gap-4 p-4 rounded-2xl bg-[#0D0D0D] border border-white/[0.06]">
-                <div className="w-9 h-9 rounded-xl flex items-center justify-center text-[#00DEFF] bg-[#00DEFF10] border border-[#00DEFF20] flex-shrink-0">
+                <div className="w-9 h-9 rounded-xl flex items-center justify-center text-teal bg-teal/10 border border-teal/20 flex-shrink-0">
                   {icon}
                 </div>
                 <div>
                   <p className="text-[10px] text-white/30 uppercase tracking-widest">{label}</p>
                   {href
-                    ? <a href={href} className="text-sm text-white/70 hover:text-[#00DEFF] transition-colors">{value}</a>
+                    ? <a href={href} className="text-sm text-white/70 hover:text-teal transition-colors">{value}</a>
                     : <p className="text-sm text-white/70">{value}</p>
                   }
                 </div>
@@ -101,9 +102,10 @@ export default function Contact() {
               { icon: <FiGithub size={16} />, href: 'https://github.com/Aman-Sigroha', label: 'GitHub' },
               { icon: <FiLinkedin size={16} />, href: 'https://linkedin.com/in/aman-sigroha', label: 'LinkedIn' },
               { icon: <SiUpwork size={15} />, href: 'https://www.upwork.com/freelancers/amansigroha', label: 'Upwork' },
+              { icon: <LeetCodeIcon size={16} />, href: LEETCODE_URL, label: 'LeetCode' },
             ].map(({ icon, href, label }) => (
               <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
-                className="w-10 h-10 glass rounded-full flex items-center justify-center text-white/50 hover:text-[#00DEFF] hover:border-[#00DEFF30] transition-all">
+                className="w-10 h-10 glass rounded-full flex items-center justify-center text-white/50 hover:text-teal hover:border-teal/30 transition-all">
                 {icon}
               </a>
             ))}
@@ -113,9 +115,9 @@ export default function Contact() {
         {/* ── Right: Form ── */}
         <div ref={formRef} className="animate-on-scroll lg:col-span-3">
           {status === 'success' ? (
-            <div className="h-full flex flex-col items-center justify-center text-center py-16 rounded-3xl bg-[#0D0D0D] border border-[#00DEFF20]">
-              <div className="w-16 h-16 rounded-full bg-[#00DEFF15] border border-[#00DEFF30] flex items-center justify-center mb-6">
-                <svg className="w-7 h-7 text-[#00DEFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="h-full flex flex-col items-center justify-center text-center py-16 rounded-3xl bg-[#0D0D0D] border border-teal/20">
+              <div className="w-16 h-16 rounded-full bg-teal/15 border border-teal/30 flex items-center justify-center mb-6">
+                <svg className="w-7 h-7 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
@@ -144,7 +146,7 @@ export default function Contact() {
                   name="service"
                   value={form.service}
                   onChange={handleChange}
-                  className="bg-[#111] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white/70 focus:outline-none focus:border-[#00DEFF40] transition-colors appearance-none"
+                  className="bg-[#111] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white/70 focus:outline-none focus:border-teal/40 transition-colors appearance-none"
                 >
                   <option value="">Choose a service...</option>
                   {services.map((s) => <option key={s} value={s}>{s}</option>)}
@@ -161,7 +163,7 @@ export default function Contact() {
                   rows={5}
                   maxLength={2000}
                   placeholder="Tell me about your project..."
-                  className="bg-[#111] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white/80 placeholder-white/20 focus:outline-none focus:border-[#00DEFF40] transition-colors resize-none"
+                  className="bg-[#111] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white/80 placeholder-white/20 focus:outline-none focus:border-teal/40 transition-colors resize-none"
                 />
                 <p className="text-[10px] text-white/20 text-right">{form.message.length}/2000</p>
               </div>
@@ -211,7 +213,7 @@ function FormField({ label, name, type = 'text', value, onChange, placeholder, r
         onChange={onChange}
         placeholder={placeholder}
         required={required}
-        className="bg-[#111] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white/80 placeholder-white/20 focus:outline-none focus:border-[#00DEFF40] transition-colors"
+        className="bg-[#111] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white/80 placeholder-white/20 focus:outline-none focus:border-teal/40 transition-colors"
       />
     </div>
   )

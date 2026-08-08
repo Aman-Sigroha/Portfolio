@@ -77,7 +77,7 @@ export default function AdminDashboard() {
         <div className="mb-8">
           <p className="section-label mb-2">Inbox</p>
           <h1 className="text-3xl font-bold">
-            Contact <span className="text-[#00DEFF]">Messages</span>
+            Contact <span className="text-teal">Messages</span>
           </h1>
           <p className="text-sm text-white/40 mt-2">
             Messages submitted through your portfolio contact form.
@@ -86,7 +86,7 @@ export default function AdminDashboard() {
 
         {loading && (
           <div className="flex justify-center py-20">
-            <div className="w-8 h-8 rounded-full border-2 border-[#00DEFF]/30 border-t-[#00DEFF] animate-spin" />
+            <div className="w-8 h-8 rounded-full border-2 border-teal/30 border-t-teal animate-spin" />
           </div>
         )}
 
@@ -109,7 +109,7 @@ export default function AdminDashboard() {
               className={`rounded-3xl border p-6 lg:p-7 transition-colors ${
                 msg.read
                   ? 'border-white/[0.06] bg-[#0A0A0A]'
-                  : 'border-[#00DEFF]/25 bg-[#00DEFF]/[0.03]'
+                  : 'border-teal/25 bg-teal/[0.03]'
               }`}
             >
               <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
@@ -117,14 +117,14 @@ export default function AdminDashboard() {
                   <div className="flex items-center gap-3 mb-1">
                     <h2 className="text-lg font-semibold text-white">{msg.name}</h2>
                     {!msg.read && (
-                      <span className="text-[10px] uppercase tracking-[0.18em] text-[#00DEFF] bg-[#00DEFF]/10 px-2 py-1 rounded-full">
+                      <span className="text-[10px] uppercase tracking-[0.18em] text-teal bg-teal/10 px-2 py-1 rounded-full">
                         New
                       </span>
                     )}
                   </div>
                   <a
                     href={`mailto:${msg.email}`}
-                    className="text-sm text-[#00DEFF] hover:underline"
+                    className="text-sm text-teal hover:underline"
                   >
                     {msg.email}
                   </a>
@@ -139,7 +139,7 @@ export default function AdminDashboard() {
                   </span>
                 )}
                 {msg.service && (
-                  <span className="rounded-full border border-[#00DEFF]/20 text-[#00DEFF]/80 px-3 py-1">
+                  <span className="rounded-full border border-teal/20 text-teal/80 px-3 py-1">
                     {msg.service}
                   </span>
                 )}
@@ -152,7 +152,7 @@ export default function AdminDashboard() {
               {!msg.read && (
                 <button
                   onClick={() => handleMarkRead(msg.id)}
-                  className="mt-5 text-xs text-white/45 hover:text-[#00DEFF] transition-colors"
+                  className="mt-5 text-xs text-white/45 hover:text-teal transition-colors"
                 >
                   Mark as read
                 </button>

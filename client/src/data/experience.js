@@ -1,3 +1,5 @@
+import { ACCENT } from '../lib/accent.js'
+
 export const experience = [
   {
     role: 'Freelance Full Stack ML Developer',
@@ -9,7 +11,7 @@ export const experience = [
       'Scaled concurrent verification workflows supporting 10+ simultaneous user requests with asynchronous processing.',
       'Maintained 99%+ service uptime through production deployment and backend optimization on Railway.',
     ],
-    color: '#00DEFF',
+    color: ACCENT,
   },
   {
     role: 'Full Stack Developer Intern',

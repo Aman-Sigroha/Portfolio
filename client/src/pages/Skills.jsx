@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import PageHero from '../components/PageHero'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
+import { ACCENT } from '../lib/accent.js'
 
 const CATEGORY_COLORS = {
-  Frontend:  '#00DEFF',
+  Frontend:  ACCENT,
   Backend:   '#7B61FF',
   Database:  '#FF6B9D',
   DevOps:    '#FFB547',
@@ -42,7 +43,7 @@ function SkillItem({ name, color, index }) {
 }
 
 function CategoryCard({ category, skills, index }) {
-  const color = CATEGORY_COLORS[category] || '#00DEFF'
+  const color = CATEGORY_COLORS[category] || ACCENT
   const ref = useScrollAnimation(0.08)
   return (
     <div
@@ -92,7 +93,7 @@ export default function Skills() {
       <PageHero
         pageName="Skills"
         label="Expertise"
-        title={<>MY <span className="text-[#00DEFF]">SKILLS</span></>}
+        title={<>MY <span className="text-teal">SKILLS</span></>}
         subtitle="Tools, languages, and frameworks I use to build production-ready systems."
       />
 

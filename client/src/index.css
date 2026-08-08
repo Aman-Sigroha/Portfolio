@@ -48,16 +48,16 @@ body {
   background: #000;
 }
 ::-webkit-scrollbar-thumb {
-  background: #00DEFF40;
+  background: color-mix(in srgb, var(--accent) 25%, transparent);
   border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #00DEFF80;
+  background: color-mix(in srgb, var(--accent) 50%, transparent);
 }
 
 /* ─── Selection ─── */
 ::selection {
-  background: #00DEFF30;
+  background: color-mix(in srgb, var(--accent) 19%, transparent);
   color: #ffffff;
 }
 
@@ -71,10 +71,10 @@ body {
   }
 
   .glass-teal {
-    background: rgba(0, 222, 255, 0.08);
+    background: color-mix(in srgb, var(--accent) 8%, transparent);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(0, 222, 255, 0.20);
+    border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
   }
 
   .pill {
@@ -82,11 +82,12 @@ body {
   }
 
   .teal-glow {
-    box-shadow: 0 0 25px -5px #00DEFF;
+    box-shadow: 0 0 25px -5px var(--accent);
   }
 
   .teal-text-glow {
-    text-shadow: 0 0 40px #00DEFF60, 0 0 80px #00DEFF30;
+    text-shadow: 0 0 40px color-mix(in srgb, var(--accent) 38%, transparent),
+                 0 0 80px color-mix(in srgb, var(--accent) 19%, transparent);
   }
 
   .tag-chip {
@@ -99,7 +100,7 @@ body {
 
   .btn-primary {
     @apply pill glass-teal teal-glow px-5 py-3 text-sm font-medium text-white transition-all duration-300
-           hover:bg-[#00DEFF] hover:text-black hover:shadow-[0_0_35px_-2px_#00DEFF];
+           hover:bg-teal hover:text-black hover:shadow-[0_0_35px_-2px_var(--accent)];
   }
 
   .btn-outline {
@@ -156,7 +157,7 @@ body {
   content: '';
   width: 3px;
   height: 8px;
-  background: #00DEFF;
+  background: var(--accent);
   border-radius: 2px;
   animation: scrollDot 2s ease-in-out infinite;
 }

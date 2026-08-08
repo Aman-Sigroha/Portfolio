@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { accentAlpha, accentCyanAlpha, accentNeonAlpha, pinkMode } from '../lib/accent.js'
 
 export default function CursorGlow() {
   const canvasRef = useRef(null)
@@ -32,7 +33,7 @@ export default function CursorGlow() {
       const interval = Math.max(20, 200 - speed * 3.5)
 
       if (now - lastSpawn > interval) {
-        ripples.push({ x: e.clientX, y: e.clientY, r: 0, alpha: 0.55 })
+        ripples.push({ x: e.clientX, y: e.clientY, r: 0, alpha: 0.55, hue: ripples.length % 2 })
         prev.x     = e.clientX
         prev.y     = e.clientY
         lastSpawn  = now
@@ -47,7 +48,9 @@ export default function CursorGlow() {
         r.alpha *= 0.93
         ctx.beginPath()
         ctx.arc(r.x, r.y, r.r, 0, Math.PI * 2)
-        ctx.strokeStyle = `rgba(0,222,255,${r.alpha.toFixed(3)})`
+        ctx.strokeStyle = pinkMode
+          ? (r.hue === 0 ? accentCyanAlpha(r.alpha) : accentNeonAlpha(r.alpha))
+          : accentAlpha(r.alpha)
         ctx.lineWidth   = 1.2
         ctx.stroke()
       }

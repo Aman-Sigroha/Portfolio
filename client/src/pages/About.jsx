@@ -4,6 +4,7 @@ import ExperienceTimeline from '../components/ExperienceTimeline'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import { FiGithub, FiLinkedin, FiDownload } from 'react-icons/fi'
 import { SiUpwork } from 'react-icons/si'
+import LeetCodeIcon, { LEETCODE_URL } from '../components/LeetCodeIcon'
 import { RESUME_DOWNLOAD } from '../lib/api.js'
 
 const certifications = [
@@ -39,6 +40,10 @@ export default function About() {
           <a href="https://www.upwork.com/freelancers/amansigroha" target="_blank" rel="noopener noreferrer"
             className="btn-outline flex items-center gap-2 text-sm px-5 py-2.5">
             <SiUpwork size={13} /> Upwork
+          </a>
+          <a href={LEETCODE_URL} target="_blank" rel="noopener noreferrer"
+            className="btn-outline flex items-center gap-2 text-sm px-5 py-2.5">
+            <LeetCodeIcon size={14} /> LeetCode
           </a>
         </div>
       </PageHero>
@@ -95,7 +100,7 @@ export default function About() {
             { label: 'Availability', value: 'Open to Work' },
             { label: 'Focus', value: 'Full Stack + AI' },
             { label: 'Education', value: 'B.Tech AI/DS — VIPS-TC' },
-            { label: 'Platforms', value: 'Upwork · GitHub · LinkedIn' },
+            { label: 'Platforms', value: 'Upwork · GitHub · LinkedIn · LeetCode' },
           ].map(({ label, value }) => (
             <div key={label} className="flex justify-between items-center py-3 border-b border-white/[0.05]">
               <span className="text-xs text-white/30 uppercase tracking-wide">{label}</span>

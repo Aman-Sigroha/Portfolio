@@ -12,11 +12,11 @@ export default function AboutTeaser() {
 
         <p className="text-2xl lg:text-3xl font-medium leading-relaxed text-white/80">
           Forged in{' '}
-          <span className="text-[#00DEFF]">full-stack development</span>{' '}
+          <span className="text-teal">full-stack development</span>{' '}
           and{' '}
-          <span className="text-[#00DEFF]">AI-powered systems</span>
+          <span className="text-teal">AI-powered systems</span>
           {' '}— I help startups and businesses build{' '}
-          <span className="text-[#00DEFF]">scalable digital products</span>{' '}
+          <span className="text-teal">scalable digital products</span>{' '}
           that are fast, secure, and maintainable.
           My goal is to deliver{' '}
           <span className="text-white font-semibold">clean, performant code</span>{' '}

@@ -1,5 +1,9 @@
 node_modules/
 .env
+.env.local
+client/.env.local
+client/.env.development.local
+client/src/theme/accent-pink.css
 dist/
 .DS_Store
 *.log

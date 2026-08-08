@@ -51,7 +51,7 @@ export default function AdminLogin() {
                 autoComplete="current-password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full rounded-xl bg-black border border-white/[0.10] px-4 py-3 text-sm text-white outline-none focus:border-[#00DEFF]/50 transition-colors"
+                className="w-full rounded-xl bg-black border border-white/[0.10] px-4 py-3 text-sm text-white outline-none focus:border-teal/50 transition-colors"
                 placeholder="••••••••••••"
                 required
               />
@@ -93,7 +93,7 @@ export function AdminLoginRedirectIfAuthed({ children }) {
   if (status === 'loading') {
     return (
       <div className="min-h-screen bg-black flex items-center justify-center">
-        <div className="w-8 h-8 rounded-full border-2 border-[#00DEFF]/30 border-t-[#00DEFF] animate-spin" />
+        <div className="w-8 h-8 rounded-full border-2 border-teal/30 border-t-teal animate-spin" />
       </div>
     )
   }

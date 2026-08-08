@@ -5,10 +5,10 @@ export default {
     extend: {
       colors: {
         teal: {
-          DEFAULT: '#00DEFF',
-          glow: '#00EDFF',
-          muted: '#00DEFF29',
-          dim: '#C5F8FF',
+          DEFAULT: 'var(--accent)',
+          glow: 'var(--accent-hover)',
+          muted: 'color-mix(in srgb, var(--accent) 16%, transparent)',
+          dim: 'var(--accent-soft)',
         },
         dark: {
           DEFAULT: '#000000',

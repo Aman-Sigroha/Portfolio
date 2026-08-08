@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
+import { ACCENT } from '../lib/accent.js'
 
 const services = [
   {
@@ -10,7 +11,7 @@ const services = [
       </svg>
     ),
     title: 'Full Stack Development',
-    color: '#00DEFF',
+    color: ACCENT,
     description:
       'End-to-end web applications using React, Node.js, and PostgreSQL. From API design to pixel-perfect UIs — fast, secure, and production-ready.',
     skills: ['React.js', 'Next.js', 'Node.js', 'Express', 'PostgreSQL', 'MongoDB'],
@@ -112,7 +113,7 @@ export default function SkillsSection() {
         <div>
           <p className="section-label mb-3">What I Do</p>
           <h2 className="text-3xl lg:text-4xl font-bold text-white">
-            My <span className="text-[#00DEFF]">Services</span>
+            My <span className="text-teal">Services</span>
           </h2>
         </div>
         <Link to="/skills" className="hidden sm:block btn-outline text-sm">

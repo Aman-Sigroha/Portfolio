@@ -109,7 +109,7 @@ function ProjectCard({ project, index }) {
           <p className="text-[11px] font-medium tracking-[0.18em] uppercase text-white/45 mb-2">
             {category}
           </p>
-          <h3 className="text-xl lg:text-2xl font-bold text-white leading-tight group-hover:text-[#00DEFF] transition-colors duration-300">
+          <h3 className="text-xl lg:text-2xl font-bold text-white leading-tight group-hover:text-teal transition-colors duration-300">
             {project.title}
           </h3>
         </div>
@@ -126,7 +126,7 @@ function ProjectCard({ project, index }) {
         </div>
         <FiArrowUpRight
           size={18}
-          className="flex-shrink-0 mt-1 text-white/25 group-hover:text-[#00DEFF] transition-colors duration-300"
+          className="flex-shrink-0 mt-1 text-white/25 group-hover:text-teal transition-colors duration-300"
         />
       </div>
     </article>
@@ -151,7 +151,7 @@ export default function Projects() {
 
   return (
     <main className="relative min-h-screen">
-      <PageHero pageName="Projects" title={<>MY <span className="text-[#00DEFF]">PROJECTS</span></>}>
+      <PageHero pageName="Projects" title={<>MY <span className="text-teal">PROJECTS</span></>}>
         <div className="flex flex-wrap justify-center gap-2 mt-10 lg:mt-12">
           {CATEGORIES.map((cat) => (
             <button

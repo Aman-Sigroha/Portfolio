@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi'
 import { SiUpwork } from 'react-icons/si'
 import { RESUME_DOWNLOAD } from '../lib/api.js'
+import LeetCodeIcon, { LEETCODE_URL } from './LeetCodeIcon'
 import Logo from './Logo'
 
 const navLinks = [
@@ -36,6 +37,7 @@ export default function Navbar() {
           { icon: <FiGithub size={22} />, href: 'https://github.com/Aman-Sigroha', label: 'GitHub' },
           { icon: <FiLinkedin size={22} />, href: 'https://linkedin.com/in/aman-sigroha', label: 'LinkedIn' },
           { icon: <SiUpwork size={20} />, href: 'https://www.upwork.com/freelancers/amansigroha', label: 'Upwork' },
+          { icon: <LeetCodeIcon size={20} />, href: LEETCODE_URL, label: 'LeetCode' },
           { icon: <FiMail size={22} />, href: 'mailto:amansigrohawork@gmail.com', label: 'Email' },
         ].map(({ icon, href, label }) => (
           <a
@@ -72,8 +74,8 @@ export default function Navbar() {
                 to={to}
                 className={`inline-block px-7 py-2 rounded-full text-base font-semibold origin-center transition-all duration-500 ease-out hover:scale-110 ${
                   active
-                    ? 'text-[#00DEFF] scale-105'
-                    : 'text-white/80 hover:text-[#00DEFF]'
+                    ? 'text-teal scale-105'
+                    : 'text-white/80 hover:text-teal'
                 }`}
               >
                 {label}
@@ -124,7 +126,7 @@ export default function Navbar() {
           <Link
             key={to}
             to={to}
-            className="text-3xl font-bold text-white/80 hover:text-[#00DEFF] transition-colors"
+            className="text-3xl font-bold text-white/80 hover:text-teal transition-colors"
           >
             {label}
           </Link>
@@ -133,10 +135,11 @@ export default function Navbar() {
           Download CV
         </a>
         <div className="flex gap-6 mt-4">
-          <a href="https://github.com/Aman-Sigroha" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-[#00DEFF]"><FiGithub size={22}/></a>
-          <a href="https://linkedin.com/in/aman-sigroha" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-[#00DEFF]"><FiLinkedin size={22}/></a>
-          <a href="https://www.upwork.com/freelancers/amansigroha" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-[#00DEFF]"><SiUpwork size={20}/></a>
-          <a href="mailto:amansigrohawork@gmail.com" className="text-white/50 hover:text-[#00DEFF]"><FiMail size={22}/></a>
+          <a href="https://github.com/Aman-Sigroha" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-teal"><FiGithub size={22}/></a>
+          <a href="https://linkedin.com/in/aman-sigroha" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-teal"><FiLinkedin size={22}/></a>
+          <a href="https://www.upwork.com/freelancers/amansigroha" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-teal"><SiUpwork size={20}/></a>
+          <a href={LEETCODE_URL} target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-teal" aria-label="LeetCode"><LeetCodeIcon size={20}/></a>
+          <a href="mailto:amansigrohawork@gmail.com" className="text-white/50 hover:text-teal"><FiMail size={22}/></a>
         </div>
       </div>
     </>

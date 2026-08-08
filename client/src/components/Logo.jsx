@@ -1,4 +1,7 @@
+import { ACCENT_CYAN, ACCENT_NEON, pinkMode } from '../lib/accent.js'
+
 export function LogoMark({ size = 36, className = '' }) {
+  const gradientId = pinkMode ? 'logoGradientMix' : 'logoGradient'
   return (
     <svg
       width={size}
@@ -11,8 +14,12 @@ export function LogoMark({ size = 36, className = '' }) {
     >
       <defs>
         <linearGradient id="logoGradient" x1="8" y1="6" x2="32" y2="34" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#00DEFF" />
-          <stop offset="1" stopColor="#0099BB" />
+          <stop stopColor="var(--accent)" />
+          <stop offset="1" stopColor="var(--accent-dark)" />
+        </linearGradient>
+        <linearGradient id="logoGradientMix" x1="8" y1="6" x2="32" y2="34" gradientUnits="userSpaceOnUse">
+          <stop stopColor={ACCENT_CYAN} />
+          <stop offset="1" stopColor={ACCENT_NEON} />
         </linearGradient>
         <filter id="logoGlow" x="-40%" y="-40%" width="180%" height="180%">
           <feGaussianBlur stdDeviation="1.2" result="blur" />
@@ -22,18 +29,18 @@ export function LogoMark({ size = 36, className = '' }) {
           </feMerge>
         </filter>
       </defs>
-      <rect x="1" y="1" width="38" height="38" rx="11" fill="#050505" stroke="url(#logoGradient)" strokeWidth="1.5" />
+      <rect x="1" y="1" width="38" height="38" rx="11" fill="#050505" stroke={`url(#${gradientId})`} strokeWidth="1.5" />
       <g filter="url(#logoGlow)">
         <path
           d="M11 29L20 9L29 29"
-          stroke="url(#logoGradient)"
+          stroke={`url(#${gradientId})`}
           strokeWidth="2.8"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
         <path
           d="M14.5 22.5H25.5"
-          stroke="url(#logoGradient)"
+          stroke={`url(#${gradientId})`}
           strokeWidth="2.8"
           strokeLinecap="round"
           opacity="0.55"
@@ -62,7 +69,7 @@ export default function Logo({ size = 'md', showWordmark = true, hideWordmarkOnM
           }`}
         >
           <span className="text-white/90 group-hover:text-white transition-colors">Aman </span>
-          <span className="text-[#00DEFF] group-hover:text-[#33E8FF] transition-colors">Sigroha</span>
+          <span className="text-teal group-hover:text-[var(--accent-hover)] transition-colors">Sigroha</span>
         </span>
       )}
     </span>

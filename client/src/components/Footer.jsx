@@ -2,11 +2,13 @@ import { Link } from 'react-router-dom'
 import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi'
 import { SiUpwork } from 'react-icons/si'
 import Logo from './Logo'
+import LeetCodeIcon, { LEETCODE_URL } from './LeetCodeIcon'
 
 const socialLinks = [
   { icon: FiGithub, href: 'https://github.com/Aman-Sigroha', label: 'GitHub' },
   { icon: FiLinkedin, href: 'https://linkedin.com/in/aman-sigroha', label: 'LinkedIn' },
   { icon: SiUpwork, href: 'https://www.upwork.com/freelancers/amansigroha', label: 'Upwork' },
+  { icon: LeetCodeIcon, href: LEETCODE_URL, label: 'LeetCode' },
   { icon: FiMail, href: 'mailto:amansigrohawork@gmail.com', label: 'Email' },
 ]
 
@@ -19,7 +21,7 @@ export default function Footer() {
         <h2 className="text-3xl lg:text-5xl font-bold text-white mb-4 max-w-3xl mx-auto leading-snug lg:leading-[1.2]">
           Ready to bring your
           <br />
-          <span className="text-[#00DEFF]">project to life?</span>
+          <span className="text-teal">project to life?</span>
         </h2>
         <p className="text-white/50 mb-10 max-w-md mx-auto text-sm lg:text-base">
           Tell me about your ideas and goals — let&apos;s discuss and build something great together.
@@ -48,7 +50,7 @@ export default function Footer() {
                 href={href}
                 target={href.startsWith('mailto:') ? undefined : '_blank'}
                 rel={href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
-                className="text-white/30 hover:text-[#00DEFF] transition-colors"
+                className="text-white/30 hover:text-teal transition-colors"
                 aria-label={label}
               >
                 <Icon size={16} />

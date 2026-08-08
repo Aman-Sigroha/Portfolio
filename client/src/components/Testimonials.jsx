@@ -38,7 +38,7 @@ function TestimonialCard({ item, index }) {
         </div>
       </div>
 
-      <p className="text-[11px] text-[#00DEFF]/80 font-medium leading-snug">{item.project}</p>
+      <p className="text-[11px] text-teal/80 font-medium leading-snug">{item.project}</p>
 
       <Stars rating={item.rating} />
 
@@ -72,7 +72,7 @@ export default function Testimonials() {
       <div className="mb-8">
         <p className="section-label mb-3">Client Feedback</p>
         <h2 className="text-2xl font-bold text-white">
-          What clients <span className="text-[#00DEFF]">say on Upwork</span>
+          What clients <span className="text-teal">say on Upwork</span>
         </h2>
       </div>
 

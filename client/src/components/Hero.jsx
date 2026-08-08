@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import CornerOrb from './CornerOrb'
+import { ACCENT_CYAN, ACCENT_NEON, pinkMode } from '../lib/accent.js'
 
 const roles = [
   'Full Stack Developer',
@@ -46,9 +47,9 @@ export default function Hero() {
         {/* Animated sub-label */}
         <div className="flex items-center justify-center gap-3 mb-6 overflow-hidden h-8">
           <span className="section-label">FULL STACK</span>
-          <span className="w-1 h-1 rounded-full bg-[#00DEFF] animate-pulse" />
+          <span className="w-1 h-1 rounded-full bg-teal animate-pulse" />
           <span
-            className="text-xs font-medium tracking-[0.15em] uppercase text-[#C5F8FF] transition-all duration-400"
+            className="text-xs font-medium tracking-[0.15em] uppercase text-teal-dim transition-all duration-400"
             style={{
               opacity: visible ? 1 : 0,
               transform: visible ? 'translateY(0)' : 'translateY(-12px)',
@@ -57,7 +58,7 @@ export default function Hero() {
           >
             {roles[roleIndex]}
           </span>
-          <span className="w-1 h-1 rounded-full bg-[#00DEFF] animate-pulse" />
+          <span className="w-1 h-1 rounded-full bg-teal animate-pulse" />
           <span className="section-label">DEVELOPER</span>
         </div>
 
@@ -69,7 +70,12 @@ export default function Hero() {
           <span className="block">AMAN</span>
           <span
             className="block teal-text-glow"
-            style={{ color: '#00DEFF' }}
+            style={pinkMode ? {
+              background: `linear-gradient(90deg, ${ACCENT_CYAN}, ${ACCENT_NEON})`,
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            } : { color: 'var(--accent)' }}
           >
             SIGROHA
           </span>
@@ -80,7 +86,7 @@ export default function Hero() {
           I build clear, scalable, and high-performance digital experiences —
           from identity verification APIs to blockchain platforms.
           Let's create something that{' '}
-          <span className="text-[#00DEFF]">actually works.</span>
+          <span className="text-teal">actually works.</span>
         </p>
 
         {/* CTAs */}
@@ -102,7 +108,7 @@ export default function Hero() {
             { value: '40%', label: 'Avg. Performance Gain' },
           ].map(({ value, label }) => (
             <div key={label} className="text-center">
-              <div className="text-2xl lg:text-3xl font-bold text-[#00DEFF]">{value}</div>
+              <div className="text-2xl lg:text-3xl font-bold text-teal">{value}</div>
               <div className="text-xs text-white/40 mt-1 tracking-wide">{label}</div>
             </div>
           ))}

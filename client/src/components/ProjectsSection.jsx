@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import { FiGithub, FiExternalLink } from 'react-icons/fi'
+import { accentAlpha } from '../lib/accent.js'
 
 const FALLBACK_PROJECTS = [
   {
@@ -46,12 +47,12 @@ function ProjectCard({ project, index }) {
   return (
     <div
       ref={ref}
-      className="animate-on-scroll group relative rounded-3xl overflow-hidden bg-dark-card border border-white/[0.06] hover:border-[#00DEFF20] transition-all duration-500 cursor-pointer"
+      className="animate-on-scroll group relative rounded-3xl overflow-hidden bg-dark-card border border-white/[0.06] hover:border-teal/20 transition-all duration-500 cursor-pointer"
       style={{ transitionDelay: `${index * 80}ms` }}
     >
       {/* Hover teal glow */}
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-           style={{ background: 'radial-gradient(ellipse at center, rgba(0,222,255,0.07) 0%, transparent 70%)' }} />
+           style={{ background: `radial-gradient(ellipse at center, ${accentAlpha(0.07)} 0%, transparent 70%)` }} />
 
       {/* Image placeholder / gradient thumbnail */}
       <div className="relative h-52 overflow-hidden">
@@ -79,7 +80,7 @@ function ProjectCard({ project, index }) {
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="w-8 h-8 glass rounded-full flex items-center justify-center text-white/70 hover:text-white hover:border-[#00DEFF40] transition-all"
+              className="w-8 h-8 glass rounded-full flex items-center justify-center text-white/70 hover:text-white hover:border-teal/40 transition-all"
             >
               <FiGithub size={14} />
             </a>
@@ -108,7 +109,7 @@ function ProjectCard({ project, index }) {
         </div>
 
         {/* Title */}
-        <h3 className="text-lg font-bold text-white group-hover:text-[#00DEFF] transition-colors duration-300 mb-1">
+        <h3 className="text-lg font-bold text-white group-hover:text-teal transition-colors duration-300 mb-1">
           {project.title}
         </h3>
         <p className="text-xs text-white/40 uppercase tracking-widest mb-3">{project.subtitle}</p>
@@ -139,7 +140,7 @@ export default function ProjectsSection() {
         <div>
           <p className="section-label mb-3">Selected Work</p>
           <h2 className="text-3xl lg:text-4xl font-bold text-white">
-            Featured <span className="text-[#00DEFF]">Projects</span>
+            Featured <span className="text-teal">Projects</span>
           </h2>
         </div>
         <Link

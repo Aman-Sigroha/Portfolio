@@ -14,7 +14,7 @@ export default function AdminRoute() {
   if (status === 'loading') {
     return (
       <div className="min-h-screen bg-black flex items-center justify-center">
-        <div className="w-8 h-8 rounded-full border-2 border-[#00DEFF]/30 border-t-[#00DEFF] animate-spin" />
+        <div className="w-8 h-8 rounded-full border-2 border-teal/30 border-t-teal animate-spin" />
       </div>
     )
   }
