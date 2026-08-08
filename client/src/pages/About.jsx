@@ -21,7 +21,7 @@ export default function About() {
       <PageHero
         pageName="About"
         label="About Me"
-        title={<>ABOUT <span className="text-[#00DEFF]">ME</span></>}
+        title={<>ABOUT <span className="text-teal">ME</span></>}
         subtitle="Full Stack Developer and AI systems builder based in New Delhi, India — delivering production-ready systems since early 2025."
       >
         <div className="mt-8 flex flex-wrap justify-center gap-3">
@@ -50,10 +50,10 @@ export default function About() {
           { value: '8+', label: 'Projects Delivered' },
           { value: '5★', label: 'Upwork Rating' },
           { value: '100%', label: 'Job Success Score' },
-          { value: '7.8', label: 'CGPA (B.Tech AI/DS)' },
+          { value: '8.09', label: 'CGPA (B.Tech AI/DS)' },
         ].map(({ value, label }) => (
           <div key={label} className="rounded-2xl bg-[#0D0D0D] border border-white/[0.06] p-6 text-center">
-            <div className="text-3xl font-black text-[#00DEFF]">{value}</div>
+            <div className="text-3xl font-black text-teal">{value}</div>
             <div className="text-xs text-white/35 mt-2 leading-tight">{label}</div>
           </div>
         ))}
@@ -82,7 +82,7 @@ export default function About() {
             </p>
             <p>
               I'm currently pursuing a <span className="text-white">B.Tech in AI and Data Science</span> at
-              Vivekananda Institute of Professional Studies, New Delhi (Expected June 2027, CGPA 7.8/10).
+              Vivekananda Institute of Professional Studies, New Delhi (Expected June 2027, CGPA 8.09/10).
             </p>
           </div>
         </div>
@@ -111,10 +111,10 @@ export default function About() {
           <div>
             <p className="section-label mb-3">Career</p>
             <h2 className="text-2xl font-bold text-white">
-              Work <span className="text-[#00DEFF]">Experience</span>
+              Work <span className="text-teal">Experience</span>
             </h2>
           </div>
-          <Link to="/experience" className="text-sm text-white/40 hover:text-[#00DEFF] transition-colors">
+          <Link to="/experience" className="text-sm text-white/40 hover:text-teal transition-colors">
             View full timeline →
           </Link>
         </div>
@@ -127,16 +127,16 @@ export default function About() {
         <div className="rounded-3xl bg-[#0D0D0D] border border-white/[0.06] p-8">
           <p className="section-label mb-5">Education</p>
           <div className="flex items-start gap-4">
-            <div className="w-10 h-10 rounded-xl bg-[#00DEFF10] border border-[#00DEFF20] flex items-center justify-center flex-shrink-0">
-              <svg className="w-5 h-5 text-[#00DEFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-10 h-10 rounded-xl bg-teal/10 border border-teal/20 flex items-center justify-center flex-shrink-0">
+              <svg className="w-5 h-5 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
                   d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
               </svg>
             </div>
             <div>
               <h3 className="text-sm font-bold text-white">Vivekananda Institute of Professional Studies – TC</h3>
-              <p className="text-xs text-[#00DEFF] mt-1">B.Tech — Artificial Intelligence & Data Science</p>
-              <p className="text-xs text-white/30 mt-1">CGPA: 7.8/10 · Expected June 2027 · New Delhi, India</p>
+              <p className="text-xs text-teal mt-1">B.Tech — Artificial Intelligence & Data Science</p>
+              <p className="text-xs text-white/30 mt-1">CGPA: 8.09/10 · Expected June 2027 · New Delhi, India</p>
             </div>
           </div>
         </div>
@@ -147,7 +147,7 @@ export default function About() {
           <ul className="flex flex-col gap-4">
             {certifications.map((cert, i) => (
               <li key={i} className="flex items-start gap-3 text-sm text-white/60">
-                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#00DEFF] flex-shrink-0" />
+                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-teal flex-shrink-0" />
                 {cert}
               </li>
             ))}
