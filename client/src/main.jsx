@@ -5,9 +5,6 @@ import App from './App.jsx'
 import './theme/accent-default.css'
 import './index.css'
 
-if (import.meta.env.VITE_PINK_THEME === 'true') {
-  import('./theme/accent-pink.css')
-}
 import { API_BASE } from './lib/api.js'
 
 axios.defaults.baseURL = API_BASE
